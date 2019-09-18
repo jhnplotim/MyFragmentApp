@@ -20,7 +20,7 @@ import icepick.State;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class DetailFragment extends Fragment {
+public class DetailFragment extends BaseFragment {
 
 	// 1 - Declare TextView
 	// Adding @BindView in order to indicate to ButterKnife to get & serialise it
@@ -37,49 +37,32 @@ public class DetailFragment extends Fragment {
 
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-	                         Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
-		View view = inflater.inflate(R.layout.fragment_detail, container, false);
-		// 2 - Get mTextView from layout (don't forget to create ID in fragment_detail.xml)
-		//this.mTextView = view.findViewById(R.id.fragment_detail_txt_view);
-
-		// Telling ButterKnife to bind all views in layout
-		ButterKnife.bind(this,view);
-		return view;
+	protected BaseFragment newInstance() {
+		return new DetailFragment();
 	}
 
 	@Override
-	public void onActivityCreated(Bundle savedInstanceState) {
-		super.onActivityCreated(savedInstanceState);
-		// 5 - Restore last mButtonTag if possible
-//		if (savedInstanceState != null) {
-//			int buttonTagRestored = savedInstanceState.getInt(KEY_BUTTONTAG, 0);
-//			// 6 - Update TextView
-//			this.updateTextView(buttonTagRestored);
-//		}
-		//ICE PICK IMPLEMENTATION
-		// Restore all @State annotation variables in Bundle
-		Icepick.restoreInstanceState(this, savedInstanceState);
+	protected int getFragmentLayout() {
+		return R.layout.fragment_detail;
+	}
+
+	@Override
+	protected void configureDesign() {
+
+	}
+
+	@Override
+	protected void updateDesign() {
 		this.updateTextView(this.mButtonTag);
 	}
-
-	@Override
-	public void onSaveInstanceState(Bundle outState) {
-		super.onSaveInstanceState(outState);
-		// 4 - Save mButtonTag in Bundle when fragment is destroyed
-//		outState.putInt(KEY_BUTTONTAG, mButtonTag);
-		// ICE PICK IMPLEMENTATION
-		// Save all @State annotation variables in Bundle
-		Icepick.saveInstanceState(this, outState);
-	}
-
 
 	//------------
 	// UPDATE UI
 	//------------
+
+	//Update TextView depending on TAG's button
 	public void updateTextView(int tag) {
-		// 3 - Save tag in ButtonTag variable
+		// Save tag in ButtonTag variable
 		this.mButtonTag = tag;
 
 		switch (tag){
