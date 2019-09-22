@@ -9,14 +9,20 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.jcode.myfragmentapp.R;
+
+import butterknife.BindView;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class MainFragment extends Fragment implements View.OnClickListener {
+public class MainFragment extends BaseFragment implements View.OnClickListener {
 
+	@BindView(R.id.fragment_main_button_happy) Button mHappyButton;
+	@BindView(R.id.fragment_main_button_sad) Button mSadButton;
+	@BindView(R.id.fragment_main_button_horrible) Button mHorribleButton;
 
 	public MainFragment() {
 		// Required empty public constructor
@@ -32,18 +38,29 @@ public class MainFragment extends Fragment implements View.OnClickListener {
 
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-	                         Bundle savedInstanceState) {
-		// Inflate the layout for this fragment
-		View result = inflater.inflate(R.layout.fragment_main, container, false);
+	protected BaseFragment newInstance() {
+		return new MainFragment();
+	}
+
+	@Override
+	protected int getFragmentLayout() {
+		return R.layout.fragment_main;
+	}
+
+	@Override
+	protected void configureDesign() {
 
 		//Set OnClickListener for buttons
-		result.findViewById(R.id.fragment_main_button_happy).setOnClickListener(this);
-		result.findViewById(R.id.fragment_main_button_sad).setOnClickListener(this);
-		result.findViewById(R.id.fragment_main_button_horrible).setOnClickListener(this);
-
-		return  result;
+		mHappyButton.setOnClickListener(this);
+		mHorribleButton.setOnClickListener(this);
+		mSadButton.setOnClickListener(this);
 	}
+
+	@Override
+	protected void updateDesign() {
+
+	}
+
 
 	@Override
 	public void onAttach(Context context) {

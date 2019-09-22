@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Controllers.Activities.ParamsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="#808080">
 
     <!-- Toolbar declaration -->
     <include layout="@layout/toolbar"
