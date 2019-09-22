@@ -5,4 +5,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="txt_details_btn">SHOW ME DETAILS !</string>
     <string name="no_details_txt">I have no details to show you!</string>
+    <string name="activity_detail_title_label">Detail</string>
+    <string name="activity_main_title_label">My Fragment App</string>
+    <string name="activity_params_title_label">Settings</string>
 </resources>

@@ -1,23 +1,26 @@
 package com.jcode.myfragmentapp.Controllers.Activities;
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.os.Bundle;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.widget.Toolbar;
 
 import com.jcode.myfragmentapp.Controllers.Fragments.DetailFragment;
 import com.jcode.myfragmentapp.R;
 
-public class DetailActivity extends AppCompatActivity {
+
+public class DetailActivity extends BaseActivity {
 
 	// 1 - Create static variable to identify Intent
 	public static final String EXTRA_BUTTON_TAG = "com.jcode.myfragmentapp.Controllers.Activities.DetailActivity.EXTRA_BUTTON_TAG";
 	DetailFragment mDetailFragment;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_detail);
+	protected int getActivityLayout() {
+		return R.layout.activity_detail;
+	}
 
+	@Override
+	protected void configureDesign() {
+
+		//Configure and show detail fragment
 		this.configureAndShowDetailFragment();
 	}
 
@@ -59,4 +62,20 @@ public class DetailActivity extends AppCompatActivity {
 		// Update DetailFragment's TextView
 		mDetailFragment.updateTextView(buttonTag);
 	}
+
+	@Override
+	public void configureToolbar() {
+		super.configureToolbar();
+		//Display home up for Detail Activity
+		//Check mToolbar is not null before setting up to avoid run time errors.
+		if(mToolbar != null){
+			//Get a support ActionBar corresponding to this toolbar
+			ActionBar ab = getSupportActionBar();
+			//Enable the Up Button
+			ab.setDisplayHomeAsUpEnabled(true);
+		}
+
+
+	}
+
 }

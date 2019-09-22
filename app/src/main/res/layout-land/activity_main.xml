@@ -3,24 +3,37 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
-    <FrameLayout
+    <!-- Toolbar declcaration -->
+    <include layout="@layout/toolbar"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"/>
 
-        android:id="@+id/frame_layout_main"
-        android:layout_width="0dp"
+    <LinearLayout
         android:layout_height="match_parent"
-        android:layout_weight="30">
+        android:layout_width="match_parent"
+        android:orientation="horizontal">
 
-    </FrameLayout>
+        <FrameLayout
 
-    <FrameLayout
+            android:id="@+id/frame_layout_main"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="30">
 
-        android:id="@+id/frame_layout_detail"
-        android:layout_width="0dp"
-        android:layout_height="match_parent"
-        android:layout_weight="70">
+        </FrameLayout>
 
-    </FrameLayout>
+        <FrameLayout
+
+            android:id="@+id/frame_layout_detail"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="70">
+
+        </FrameLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
+

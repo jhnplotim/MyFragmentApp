@@ -12,8 +12,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Controllers.Activities.DetailActivity"></activity>
-        <activity android:name=".Controllers.Activities.MainActivity">
+        <activity android:name=".Controllers.Activities.ParamsActivity"
+            android:label="@string/activity_params_title_label"
+            android:parentActivityName=".Controllers.Activities.MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Controllers.Activities.MainActivity"/>
+        </activity>
+        <!-- <activity android:name=".Controllers.Activities.BaseActivity"></activity> -->
+        <activity
+            android:name=".Controllers.Activities.DetailActivity"
+            android:label="@string/activity_detail_title_label"
+            android:parentActivityName=".Controllers.Activities.MainActivity">
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".Controllers.Activities.MainActivity"/>
+        </activity>
+        <activity
+            android:name=".Controllers.Activities.MainActivity"
+            android:label="@string/activity_main_title_label">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
